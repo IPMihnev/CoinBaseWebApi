@@ -14,7 +14,8 @@ namespace WebApiProject.Handlers.Users.GetAll
         }
         public async Task<GetAllUsersResponse> Handle(GetAllUsersRequest request, CancellationToken cancellationToken)
         {
-            var users = await this.userRepository.GetAllAsync();
+            var users = (await this.userRepository.GetAllAsync())
+                .Select(x => x.ToUserDto()).ToList();
             return new GetAllUsersResponse(users);
         }
     }

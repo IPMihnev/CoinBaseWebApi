@@ -1,21 +1,19 @@
 ﻿using Domain.Features.Users.Entities;
-using Domain.Features.Users.Mappings;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Database
 {
-    public class WebApiProjectContext : DbContext
+    public class WebApiProjectContext : IdentityDbContext<UserEntity>
     {
         public WebApiProjectContext(DbContextOptions<WebApiProjectContext> options)
             : base(options)
         {
         }
 
-        public DbSet<UserEntity> Users { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserMapping());
+            base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

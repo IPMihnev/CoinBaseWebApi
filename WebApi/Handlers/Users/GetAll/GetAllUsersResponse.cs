@@ -1,14 +1,15 @@
-﻿using Domain.Features.Users.Entities;
+﻿using Domain.Features.Users.Dtos;
+using Domain.Features.Users.Entities;
 
 namespace WebApiProject.Handlers.Users.GetAll
 {
     public class GetAllUsersResponse
     {
-        public GetAllUsersResponse(UserEntity[] users)
+        public GetAllUsersResponse(List<UserDto> users)
         {
             this.Users = users;
         }
 
-        public UserEntity[] Users { get; set; }
+        public List<UserDto> Users { get; set; }
     }
 }

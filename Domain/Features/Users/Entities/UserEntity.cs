@@ -1,10 +1,11 @@
-﻿namespace Domain.Features.Users.Entities
+﻿using Domain.Features.Users.Dtos;
+using Microsoft.AspNetCore.Identity;
+
+namespace Domain.Features.Users.Entities
 {
-    public class UserEntity
+    public class UserEntity : IdentityUser
     {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
+        public UserDto ToUserDto()
+            => new UserDto(this.UserName, this.Email);
     }
 }

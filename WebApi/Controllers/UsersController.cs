@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using WebApiProject.Handlers.Users.Create;
 using WebApiProject.Handlers.Users.GetAll;
 
 namespace WebApiProject.Controllers
@@ -20,10 +21,9 @@ namespace WebApiProject.Controllers
         public async Task<ActionResult<GetAllUsersResponse>> Get()
             => this.Ok(await mediator.Send(new GetAllUsersRequest()));
 
-        //// POST: UsersController/Create
-        //[HttpPost]
-        //[ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
-        //public async Task<ActionResult<CreateUserResponse>> Create(CreateUserRequest request)
-        //    => this.Ok(await mediator.Send(request));
+        [HttpPost]
+        [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
+        public async Task<ActionResult<CreateUserResponse>> Create(CreateUserRequest request)
+            => this.Ok(await mediator.Send(request));
     }
 }

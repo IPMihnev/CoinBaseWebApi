@@ -4,9 +4,10 @@ namespace Domain.Features.Users.Repositories
 {
     public interface IUserRepository
     {
-        Task InsertAsync(UserEntity user);
-        Task<UserEntity[]> GetAllAsync();
-        void Update(UserEntity user);
-        void Delete(UserEntity user);
+        Task<List<UserEntity>> GetAllAsync();
+        Task<bool> InsertAsync(UserEntity user, string password);
+        Task<bool> UpdateAsync(UserEntity user);
+        Task<bool> DeleteAsync(UserEntity user);
+        Task<bool> CheckPasswordAsync(UserEntity user, string password);
     }
 }

@@ -1,0 +1,11 @@
+﻿List migrations:
+	dotnet ef migrations list --project ..\Domain\Domain.csproj --startup-project .\WebApiProject.csproj --context WebApiProjectContext
+
+Create migration : 
+	dotnet ef migrations add "Init" --project ..\Domain\Domain.csproj --startup-project .\WebApiProject.csproj --context WebApiProjectContext -o ..\Domain\Database\Migrations\
+
+Delete last migration:
+	dotnet ef migrations remove --project ..\Domain\Domain.csproj --startup-project .\WebApiProject.csproj --context WebApiProjectContext
+
+Apply migrations:
+	dotnet ef database update --project ..\Domain\Domain.csproj --startup-project .\WebApiProject.csproj --context WebApiProjectContext
